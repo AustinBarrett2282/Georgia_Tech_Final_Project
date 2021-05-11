@@ -31,9 +31,9 @@ Find the following information about the infected Windows machine:
 -	MAC address: 00:59:07:b0:63:a4
 
 1.	What is the username of the Windows user whose computer is infected?
- - 	matthijs.devries
+   - matthijs.devries
 2.	What are the IP addresses used in the actual infection traffic?
- -  It looks like the address of 172.16.4.205 is the infected PC so its is one of the addresses, and when I looked at the conversations this IP address had it talked with 185.243.115.84 the most so this is likely the source of the infection.  Upon further investigation I saw that the infected IP had downloaded a large file from the 185.243.115.84 IP, and when I looked up this IP on virustotal it came back with red flags.
+   -  It looks like the address of 172.16.4.205 is the infected PC so its is one of the addresses, and when I looked at the conversations this IP address had it talked with 185.243.115.84 the most so this is likely the source of the infection.  Upon further investigation I saw that the infected IP had downloaded a large file from the 185.243.115.84 IP, and when I looked up this IP on virustotal it came back with red flags.
 
 3.	As a bonus, retrieve the desktop background of the Windows host.
     ![](2021-05-11-17-17-13.png)
