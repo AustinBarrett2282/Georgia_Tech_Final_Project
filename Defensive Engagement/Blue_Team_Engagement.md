@@ -39,7 +39,7 @@ Traffic to these services should be carefully monitored. To this end, we have im
 
 #### Excessive HTTP Errors
 
-![](2021-05-11-15-44-15.png)
+![](Excessive_HTTP_Errors.png)
 
 Alert 1 is implemented as follows:
   - **Metric**: WHEN count() GROUPED OVER top 5 'http.response.status_code'
@@ -47,11 +47,11 @@ Alert 1 is implemented as follows:
   - **Vulnerability Mitigated**: Brute Force or Enumeration
   - **Reliability**: This is a very reliable alert. Since codes 400 or above are errors from the client or server side, this alert will block out any normal or successful responses.
 
-![](2021-05-11-17-28-15.png)
+![](Excessive_HTTP_Errors_Watcher.png)
 
 #### HTTP Request Size Monitor
 
-![](2021-05-11-15-48-55.png)
+![](HTTP_Request_Size_Monitor.png)
 
 Alert 2 is implemented as follows:
   - **Metric**: WHEN sum() of http.request.bytes OVER all documents
@@ -59,11 +59,11 @@ Alert 2 is implemented as follows:
   - **Vulnerability Mitigated**: DDOS or Code injection such as XSS via HTTP requests
   - **Reliability**: This alert could create false positives as large HTTP request that are not malicious and legit HTTP traffic could trigger the alarm. Intermediate reliability
 
-![](2021-05-11-17-27-51.png)
+![](HTTP_Request_Size_Monitor_Watcher.png)
 
 #### CPU Usage Monitor
 
-![](2021-05-11-15-52-29.png)
+![](CPU_Usage_Monitor.png)
 
 Alert 3 is implemented as follows:
   - **Metric**: WHEN max() OF system.process.cpu.total.pct OVER all documents
@@ -71,4 +71,4 @@ Alert 3 is implemented as follows:
   - **Vulnerability Mitigated**: Any process or program, malicious or not, that is taking up too many resources
   - **Reliability**: This is also a very reliable alert. When you can see how much headroom your CPU has you can have a better understanding of the overall health of your system.
 
-![](2021-05-11-17-28-59.png)
+![](CPU_Usage_Monitor_Watcher.png)

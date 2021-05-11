@@ -12,10 +12,10 @@ Nmap scan results for each machine reveal the below services and OS details:
 ```bash
 $ nmap --script nmap-vulners -sV 192.168.1.110
 ```         
- ![](2021-05-06-19-13-21.png)
- ![](2021-05-06-19-14-12.png)
- ![](2021-05-06-19-14-42.png)
- ![](2021-05-06-19-14-55.png)
+ ![](Nmap_Scan_1.png)
+ ![](Nmap_Scan_2.png)
+ ![](Nmap_Scan_3.png)
+ ![](Nmap_Scan_4.png)
 
 This scan identifies the services below as potential points of entry:
 - Target 1
@@ -53,22 +53,22 @@ The Red Team was able to penetrate `Target 1` and retrieve the following confide
                grep flag elements.html
                grep flag index.html
                grep flag service.html
-               ![](2021-05-06-20-43-01.png)
+  ![](Flag_1.png)
 
   - `flag2.txt`:Flag2{fc3fd58dcdad9ab23faca6e9a3e581c}
     - **Exploit Used**
       - I again used a WPscan to find the user Michael, guessed his password for an SSH session, and used the find command to look for flag2.txt. It was located in /var/www 
       - find / -iname flag2.txt
       
-      ![](2021-05-06-20-41-01.png)
-      ![](2021-05-06-20-41-47.png)
+      ![](Find_Flag_2.png)
+      ![](Cat_Flag_2.png)
 
  - `flag3.txt`: Flag3{afc01ab56b50591e7dccf93122770cd2}
     - **Exploit Used**
       - After locating the wp-config.php file within /var/www/html/wordpress I was able to discover the database username and password. These were listed as root and R@v3nSecurity respectively. and the host name was localhost
-      ![](2021-05-06-20-46-24.png)
+      ![](DB_Creds.png)
       I then used mysql to get into the DB and started looking for flag3. I first looked for the databases available, saw one titled wordpress so went into it. Then I pulled up the tables and started looking through them all from the top down. Eventually I found flag3 inside of wp_posts
-      ![](2021-05-06-20-56-25.png)  
+      ![](Flag_3.png)  
       - cd /var/www/html/wordpress
                nano wp-config.php
                mysql -u root -p'R@v3nSecurity' -h localhost
@@ -97,6 +97,6 @@ The Red Team was able to penetrate `Target 1` and retrieve the following confide
                cat /root/flag4.txt
 
 
-    ![](2021-05-06-21-14-20.png)
-    ![](2021-05-06-21-19-29.png)
-    ![](2021-05-06-21-22-16.png)
+    ![](Echo_Hashes_And_John.png)
+    ![](SSH_As_Steven.png)
+    ![](Flag4.png)
