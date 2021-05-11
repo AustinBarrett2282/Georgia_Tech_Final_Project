@@ -1,13 +1,14 @@
-Network Analysis
-Time Thieves
+# Network Analysis
+
+## Time Thieves
+
 At least two users on the network have been wasting time on YouTube. Usually, IT wouldn't pay much mind to this behavior, but it seems these people have created their own web server on the corporate network. So far, Security knows the following about these time thieves:
 ⦁	They have set up an Active Directory network.
 ⦁	They are constantly watching videos on YouTube.
 ⦁	Their IP addresses are somewhere in the range 10.6.12.0/24.
 ⦁	You must inspect your traffic capture to answer the following questions:
 1.	What is the domain name of the users' custom site?
-frank-n-ted.com
-
+    frank-n-ted.com
 2.	What is the IP address of the Domain Controller (DC) of the AD network?
 	10.6.12.12 (Frank-n-Ted-DC.frank-n-ted.com)
 3.	What is the name of the malware downloaded to the 10.6.12.203 machine? Once you have found the file, export it to your Kali machine's desktop.
@@ -15,7 +16,7 @@ frank-n-ted.com
 4.	Upload the file to 4.	VirusTotal4.	.4.	com. What kind of malware is this classified as?
 		Trojan
 
-Vulnerable Windows Machines
+## Vulnerable Windows Machines
 
 The Security team received reports of an infected Windows host on the network. They know the following:
 ⦁	Machines in the network live in the range 172.16.4.0/24.
@@ -31,11 +32,11 @@ Find the following information about the infected Windows machine:
 1.	What is the username of the Windows user whose computer is infected?
 	matthijs.devries
 2.	What are the IP addresses used in the actual infection traffic?
-It looks like the address of 172.16.4.205 is the infected PC so its is one of the addresses, and when I looked at the conversations this IP address had it talked with 185.243.115.84 the most so this is likely the source of the infection.  Upon further investigation I saw that the infected IP had downloaded a large file from the 185.243.115.84 IP, and when I looked up this IP on virustotal it came back with red flags.
+    It looks like the address of 172.16.4.205 is the infected PC so its is one of the addresses, and when I looked at the conversations this IP address had it talked with 185.243.115.84 the most so this is likely the source of the infection.  Upon further investigation I saw that the infected IP had downloaded a large file from the 185.243.115.84 IP, and when I looked up this IP on virustotal it came back with red flags.
 
 3.	As a bonus, retrieve the desktop background of the Windows host.
-Image
-Illegal Downloads
+
+## Illegal Downloads
 
 IT was informed that some users are torrenting on the network. The Security team does not forbid the use of torrents for legitimate purposes, such as downloading operating systems. However, they have a strict policy against copyright infringement.
 IT shared the following about the torrent activity:
@@ -46,8 +47,7 @@ IT shared the following about the torrent activity:
 1.	Find the following information about the machine with IP address 10.0.0.201:
 ⦁	MAC address: 00:12:3f:f4:3b:96
 ⦁	Windows username: elmer.blanco
-⦁	OS version: Image
+⦁	OS version:
 
-	2.  Which torrent file did the user download?
-	     Betty_Boop_Rhythm_on_the_Reservation
-Image
+2.  Which torrent file did the user download?
+    Betty_Boop_Rhythm_on_the_Reservation
