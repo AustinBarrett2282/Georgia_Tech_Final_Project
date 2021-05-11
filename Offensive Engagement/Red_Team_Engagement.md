@@ -86,8 +86,8 @@ The Red Team was able to penetrate `Target 1` and retrieve the following confide
     - **Exploit Used**
       - Since I was inside of the SQL DB I went to the wp_users table to find the password hashes for the user accounts. I copied the hashes and echoed them into a new file I called finalprojhashes.txt. I then ran John the ripper agaisnt the file and was able to find Stevens password. I then used this combo to SSH in as Steven. Once I had a shell as the Steven user I checked the sudo privileges of Steven and saw that he could run the python command as sudo. I then spent some time on google looking for ways to use python with sudo to escalate to root. I eventually found the command "python -c 'import pty;pty.spawn("/bin/bash")" which was listed as a typical PTY upgrade using python. Once I ran this command I was able to get root access, then I ran a find command to look for flag4. I found it in /root. A quick cat of the file and I was done. 
       -        select * from wp_users;
-               copy Micheal's hash and then: echo 'Michael:' >> finalprojhashes.txt
-               copy Steven's hash and then: echo 'Steven:' >> finalprojhashes.txt
+               copy Micheal's hash and then: echo 'Michael:$P$BjRvZQ.VQcGZlDeiKToCQd.cPw5XCe0' >> finalprojhashes.txt
+               copy Steven's hash and then: echo 'Steven:$P$Bk3VD9jsxx/loJoqNsURgHiaB23j7W/' >> finalprojhashes.txt
                john finalprojhashes.txt
                ssh steven@192.168.1.110
                password: pink84
