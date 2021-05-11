@@ -9,10 +9,14 @@ At least two users on the network have been wasting time on YouTube. Usually, IT
 -	You must inspect your traffic capture to answer the following questions:
 1.	What is the domain name of the users' custom site?
     - frank-n-ted.com
+    - Filter: ip.addr==10.6.12.0/24
 2.	What is the IP address of the Domain Controller (DC) of the AD network?
     - 10.6.12.12 (Frank-n-Ted-DC.frank-n-ted.com)
+    - Filter: ip.addr==10.6.12.0/24
 3.	What is the name of the malware downloaded to the 10.6.12.203 machine? Once you have found the file, export it to your Kali machine's desktop.
     - june11.dll
+    - Filter: ip.addr==10.6.12.0/24 and http.request.method==GET
+    - Export: File > Export Objects > HTTP
 4.	Upload the file to virustotal.com - What kind of malware is this classified as?
     - Trojan
 
@@ -29,14 +33,17 @@ Find the following information about the infected Windows machine:
 -	Host name: Rotterman-PC
 -	IP address: 172.16.4.205
 -	MAC address: 00:59:07:b0:63:a4
-
+    - Filter: ip.src==172.16.4.4 and kerberos.CNameString
 1.	What is the username of the Windows user whose computer is infected?
     - matthijs.devries
+    - Filter: ip.src==172.16.4.4 and kerberos.CNameString
 2.	What are the IP addresses used in the actual infection traffic?
     -  It looks like the address of 172.16.4.205 is the infected PC so its is one of the addresses, and when I looked at the conversations this IP address had it talked with 185.243.115.84 the most so this is likely the source of the infection.  Upon further investigation I saw that the infected IP had downloaded a large file from the 185.243.115.84 IP, and when I looked up this IP on virustotal it came back with red flags.
-
+    - Statistics > Conversations > IPv4 > Packets (sort from high to low)
 3.	As a bonus, retrieve the desktop background of the Windows host.
     ![](2021-05-11-17-17-13.png)
+    - Filter: ip.addr==172.16.4.205
+    - Export: File > Export Objects > HTTP > type empty > sort by size
 
 ## Illegal Downloads
 
@@ -51,7 +58,8 @@ IT shared the following about the torrent activity:
     -	MAC address: 00:12:3f:f4:3b:96
     -	Windows username: elmer.blanco
     -	OS version: ![](2021-05-11-17-16-35.png)
-
+    - Filter: ip.src==10.0.0.201 and kerberos.CNameString
 2.  Which torrent file did the user download?
     - Betty_Boop_Rhythm_on_the_Reservation
       ![](2021-05-11-17-15-59.png)
+    - Filter: ip.addr==10.0.0.201 and http.request.method==GET
